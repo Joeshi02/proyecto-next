@@ -10,7 +10,6 @@ const Carrito = () => {
     const [open, setOpen] = useState(false)
 
     const handleCart = () =>{
-    console.log(open);
     setOpen (!open)
 }
     

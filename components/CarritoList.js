@@ -4,9 +4,6 @@ import Contador from "./Contador";
 import Link from "next/link";
 
 const CarritoList = ({open, setOpen}) => {
-    const productId = 3; // ID del producto que deseas encontrar
-    const product = mockData.find(item => item.id === productId);
-    
     
     return(
         <div className={`${open ? 'visible opacity-100' : 'invisible opacity-0'} transition-all fixed inset-0 bg-black/20 flex justify-end`}>
