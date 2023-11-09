@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import Image from "next/image"
+import CarritoList from "./CarritoList"
 
 
 
@@ -23,6 +24,7 @@ const Carrito = () => {
                 height={28}
                 className="invert"/>
             </button>
+            <CarritoList open={open} setOpen={setOpen}/>
         </div>
     )
 }
