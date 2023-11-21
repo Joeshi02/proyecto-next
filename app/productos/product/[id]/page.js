@@ -4,11 +4,13 @@ import { mockData } from "@/data/products"
 import Image from "next/image"
 import Contador from "@/components/Contador"
 
-const Detail = ({params}) => {
+const Detail = async ({params}) => {
 
 const router = useRouter ()
 const {id} = params
-const product = mockData.find((item) => item.id === parseInt(id));
+const product = await fetch(`http://localhost:3000/api/productos/detalle/${id}`,
+ {cache: 'no-store'}
+ ).then(r => r.json());
 
     return(
         <div className="container m-auto">
