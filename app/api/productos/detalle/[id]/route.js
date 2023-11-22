@@ -1,14 +1,15 @@
-import { mockData } from "@/data/products";
+import { doc, getDoc } from "firebase/firestore";
 import { NextResponse } from "next/server";
+import { db } from "@/app/firebase/config";
 
-const sleep = (timer) => {
-    return new Promise ((resolve) => setTimeout(resolve, timer))
-}
 
 export async function GET (request, {params}){
     const { id } = params;
-    const dataDetail = mockData.find((item) => item.id === parseInt(id));
-    await sleep(1000);
     
-    return NextResponse.json(dataDetail)
+    const docRef = doc(db, 'productos', id)
+
+    const docSnapshot = await getDoc(docRef)
+
+    return NextResponse.json(docSnapshot.data())
+    
 }

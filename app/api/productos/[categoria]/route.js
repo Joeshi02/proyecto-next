@@ -4,11 +4,9 @@ import { db } from "@/app/firebase/config";
 
 export async function GET(request, { params }) {
 
-	try {
 	
 	const { categoria } = params
-    console.log('CATEGORIA: ', categoria);
-	
+
     const productosRef = collection (db, "productos")
 
     const q = categoria === 'all'
@@ -18,16 +16,7 @@ export async function GET(request, { params }) {
     const querySnapshot = await getDocs(q)
     
     const docs = querySnapshot.docs.map(doc => doc.data())
-    console.log('DOCS: ', docs);
-	
-    return NextResponse.json(docs)
-	
-	
-	} catch(e) {
-	
-		return NextResponse.json({err: error.message})
-	}
 
-    
+    return NextResponse.json(docs)
 
 }
