@@ -1,21 +1,18 @@
 "use client"
-import { useState } from "react"
 import Image from "next/image"
-import CarritoList from "./CarritoList"
+import Link from "next/link"
+import { useContext } from "react"
+import { CartContext } from "./context/CartContext"
 
 
 
 const Carrito = () => {
-    
-    const [open, setOpen] = useState(false)
-
-    const handleCart = () =>{
-    setOpen (!open)
-}
-    
+    const {getQty} = useContext(CartContext)
     return(
+        <>
+        <Link href={"/carrito"}>
         <div>
-            <button className="pt-1" onClick={handleCart}>
+            <button className="pt-1">
                 <Image
                 src={"/images_limit/carrito-de-compras.png"}
                 alt="carrito"
@@ -23,8 +20,11 @@ const Carrito = () => {
                 height={28}
                 className="invert"/>
             </button>
-            <CarritoList open={open} setOpen={setOpen}/>
+            {getQty() > 0 && <button>{getQty()}</button>}
         </div>
+        </Link>
+        </>
+        
     )
 }
 export default Carrito
