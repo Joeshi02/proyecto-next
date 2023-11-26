@@ -1,23 +1,14 @@
 "use client"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
-import Contador from "@/components/Contador"
-import { useContext, useState } from "react"
-import { CartContext} from "@/components/context/CartContext"
-import Link from "next/link"
+import Cantidad from "@/components/Cantidad"
 
 const Detail = async ({ params }) => {
-  const [cantidad, setCantidad] = useState(0)
-  const {addItem} = useContext(CartContext)
-  const handleOnAdd = (counter) =>{
-    setCantidad(counter)
-    addItem(product,counter)
-    console.log('se agregaron ', counter, 'unidades del producto', product.name);
-  }
+
   const router = useRouter()
   const { id } = params
   const product = await fetch(`http://localhost:3000/api/productos/detalle/${id}`,
-    { cache: 'no-cache' }
+    { cache: 'no-store' }
   ).then(r => r.json());
 
   return (
@@ -41,7 +32,7 @@ const Detail = async ({ params }) => {
             <h2>{product.description}</h2>
             <p className="bg-blue-400 border text-center rounded">${product.price}</p>
             <p className="bg-blue-400 border text-center rounded">Stock {product.stock}</p>
-            {cantidad > 0 ? <Link href={"/carrito"}><button>ir al carrito</button></Link> :<Contador stock={product.stock} initial={1} onAdd={handleOnAdd} />}
+            <Cantidad item={product} />
           </div>
         </div>
       </article>

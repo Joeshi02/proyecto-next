@@ -1,9 +1,7 @@
-import { useContext } from "react";
-import { CartContext } from "./context/CartContext";
+
 import Image from "next/image";
 
 const ItemCart = ({ product }) => {
-  const { removeItem } = useContext(CartContext);
 
   return (
     <div className="bg-white shadow-md rounded-md p-4 mb-2 max-w-full">
@@ -21,12 +19,6 @@ const ItemCart = ({ product }) => {
             <p className="mb-2">Cantidad: {product.quantity}</p>
             <p className="mb-2">Precio unitario: {product.price}</p>
             <p className="mb-2">Precio: {product.price * product.quantity}</p>
-            <button
-              className="bg-red-500 text-white py-2 px-4 rounded-md"
-              onClick={() => removeItem(product.id)}
-            >
-              Eliminar Producto
-            </button>
           </div>
         </div>
       </div>
