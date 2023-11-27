@@ -7,6 +7,15 @@ export async function generateMetadata({ params }) {
         title: `Limit import - ${params.categoria}`
     }
 }
+export function generateStaticParams() {
+    return[
+        {category:'all' },
+        {category:'motores' },
+        {category:'suspenciones' },
+        {category: 'volantes' }
+    ]
+}
+export const revalidate = 3600
 
 const productos = async ({ params }) => {
     const {categoria} = params
