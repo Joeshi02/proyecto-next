@@ -17,7 +17,7 @@ export const CartProvider = ({children}) =>{
     const totalQty =() => {
         return cartList.reduce((acc, item) => acc + item.quantity, 0)
     }
-    const emptyCart = () => {
+    const clear = () => {
         setCartList([])
     }
     const getTotal = () => {
@@ -25,14 +25,19 @@ export const CartProvider = ({children}) =>{
         cartList.forEach((e) => total += (e.quantity*e.price))
         return total
     }
+    const removeItem = (itemId) => {
+        const remove = cartList.filter((item) => item.id !== itemId);
+        setCartList(remove);
+      };
 return(
     <CartContex.Provider value={{
         cartList,
         addItem,
         isInCart,
         totalQty,
-        emptyCart,
-        getTotal}}>
+        clear,
+        getTotal,
+        removeItem}}>
         {children}
     </CartContex.Provider>
 )}

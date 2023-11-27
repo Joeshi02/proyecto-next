@@ -18,9 +18,14 @@ const Cantidad = ({ item }) => {
     return (
         <div className="flex justify-center">
             {isInCart(item.id) ?
+                <>
                 <Link className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1" href={'/carrito'}>
                     finalizar compra
                 </Link>
+                <Link className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1 text-center" href={'/productos/all'}>
+                    Seguir comprando
+                </Link>
+                </>
                 :
                 <>
                     <Contador stock={item.stock} counter={quantity} setCounter={setQuantity} />

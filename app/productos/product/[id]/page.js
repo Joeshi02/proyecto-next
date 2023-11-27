@@ -29,9 +29,9 @@ const Detail = async ({ params }) => {
         </div>
         <div className="w-full sm:w-1/2 p-2">
           <div className="flex flex-col m-2 text-black border border-gray-600 h-full items-center">
-            <h2>{product.description}</h2>
-            <p className="bg-blue-400 border text-center rounded">${product.price}</p>
-            <p className="bg-blue-400 border text-center rounded">Stock {product.stock}</p>
+            <h2 className="p-1">{product.description}</h2>
+            <p className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">${product.price}</p>
+            <p className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">Stock {product.stock}</p>
             <Cantidad item={product} />
           </div>
         </div>
