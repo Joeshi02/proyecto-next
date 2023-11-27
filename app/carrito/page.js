@@ -16,10 +16,16 @@ const carrito = () => {
                         <hr />
                         {cartList.map((item) => <ItemCart item={item} key={item.id} />)
                         }
-                        <div>
-                            <p>{`Total: $${getTotal()}`}</p>
-                            <button className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1" onClick={clear}>Vaciar carrito</button>
+                        <div className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md">
+                            <p className="text-xl font-bold my-4 text-black">{`Total: $${getTotal()}`}</p>
+                            <button
+                                className="w-full sm:w-2/3 lg:w-1/2 h-12 bg-blue-900 text-slate-300 rounded-lg mb-4"
+                                onClick={clear}
+                            >
+                                Vaciar carrito
+                            </button>
                         </div>
+
                         <div className=" justify-items-start">
                             <Formulario />
                         </div>
