@@ -1,25 +1,44 @@
-"use client"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import Formulario from "@/components/formulario"
+import Link from "next/link"
+import BtnVolver from "@/components/Boton"
 
-const contacto = () => {
-   const router = useRouter()
-    return (
-        <>
-        <main className="container m-auto flex justify-center">
-            <div>
-                <Image
-                src={"/images_limit/SITIO-EN-CONSTRUCCION.jpg"}
-                alt="sitio en construccion"
-                width={400}
-                height={400}/>
-                <button onClick={() => router.back()} className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">
-                Volver
-                </button>
-            </div>
-        </main>
-        </>
-    )
+const Contacto = () => {
+  
+
+  return (
+    <>
+    <BtnVolver/>
+      <main className="container m-auto flex flex-col md:flex-row justify-evenly items-center">
+        <div className="order-1 md:order-2">
+          <Formulario />
+        </div>
+        <div className="order-2 md:order-1 mt-4 md:mt-0">
+          
+          <h2 className="text-2xl text-center">Nuestras redes</h2>
+          <hr />
+          <Link className="flex items-center content-center p-2" href={'https://www.instagram.com/limit_import/'} target="_blank">
+            <Image
+              src={'/images_limit/logo_insta.png'}
+              alt="logo instagram"
+              width={40}
+              height={40}
+            />
+            <p className="p-1 text-xl">@limit_import</p>
+          </Link>
+          <Link className="flex items-center content-center p-2" href={'https://www.facebook.com//?locale=elimitautopartss_LA'} target="_blank">
+            <Image
+              src={'/images_limit/logo_facebook.png'}
+              alt="logo fb"
+              width={40}
+              height={40}
+            />
+            <p className="p-1 text-xl"> Limit import</p>
+          </Link>
+        </div>
+      </main>
+    </>
+  )
 }
 
-export default contacto
+export default Contacto

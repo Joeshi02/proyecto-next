@@ -1,11 +1,10 @@
-"use client"
-import { useRouter } from "next/navigation"
 import Image from "next/image"
 import Cantidad from "@/components/Cantidad"
+import BtnVolver from "@/components/Boton"
 
 const Detail = async ({ params }) => {
 
-  const router = useRouter()
+ 
   const { id } = params
   const product = await fetch(`http://localhost:3000/api/productos/detalle/${id}`,
     { cache: 'no-store' }
@@ -13,9 +12,7 @@ const Detail = async ({ params }) => {
 
   return (
     <div className="container m-auto">
-      <button onClick={() => router.back()} className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">
-        Volver
-      </button>
+      <BtnVolver/>
       <article className="flex flex-wrap justify-center items-center bg-white h-full">
         <div className="w-full sm:w-1/2 p-2">
           <div className="relative" style={{ paddingTop: '100%' }}>
@@ -29,9 +26,9 @@ const Detail = async ({ params }) => {
         </div>
         <div className="w-full sm:w-1/2 p-2">
           <div className="flex flex-col m-2 text-black border border-gray-600 h-full items-center">
-            <h2 className="p-1">{product.description}</h2>
+            <h2 className="p-1 text-xl">{product.name}</h2>
+            <h3 className="p-1">{product.description}</h3>
             <p className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">${product.price}</p>
-            <p className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">Stock {product.stock}</p>
             <Cantidad item={product} />
           </div>
         </div>

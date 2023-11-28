@@ -1,15 +1,17 @@
-"use client";
-import { useCartContext } from "./context/CartContex";
+"use client"
+
+import { useRouter } from "next/navigation";
 
 
-const BtnEliminar = (item) => {
-  const removeItem = useCartContext()
+
+const BtnVolver = () => {
+  const router = useRouter();
 
   return (
-    <button onClick={() => removeItem(item.id)}>
-      Eliminar producto
+    <button onClick={() => router.back()} className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">
+      Volver
     </button>
   );
 };
 
-export default BtnEliminar;
+export default BtnVolver;

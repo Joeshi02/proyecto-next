@@ -1,7 +1,7 @@
 "use client"
-import Formulario from "@/components/formulario"
+
 import Link from "next/link"
-import { CartProvider, useCartContext } from "@/components/context/CartContex"
+import { useCartContext } from "@/components/context/CartContex"
 import ItemCart from "@/components/ItemCarrito"
 
 
@@ -18,26 +18,30 @@ const carrito = () => {
                         }
                         <div className="flex flex-col items-center justify-center p-6 bg-white rounded-lg shadow-md">
                             <p className="text-xl font-bold my-4 text-black">{`Total: $${getTotal()}`}</p>
-                            <button
-                                className="w-full sm:w-2/3 lg:w-1/2 h-12 bg-blue-900 text-slate-300 rounded-lg mb-4"
-                                onClick={clear}
-                            >
+                            <button className="w-full sm:w-2/3 lg:w-1/2 h-12 bg-blue-900 text-slate-300 rounded-lg mb-4" onClick={clear}>
                                 Vaciar carrito
                             </button>
+                            <Link className="w-full sm:w-2/3 lg:w-1/2 h-12 bg-blue-900 text-slate-300 rounded-lg mb-4 flex items-center" href="/checkout">
+                                <button className="w-full">
+                                    Finalizar compra
+                                </button>
+                            </Link>
+
                         </div>
 
-                        <div className=" justify-items-start">
-                            <Formulario />
-                        </div>
+
+
+
                     </div>
                 )
                 : (
-                    <div className="flex justify-center ">
-                        <h3 className="text-center text-3xl">Tu carrito esta vacio</h3>
-                        <button className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">
-                            <Link href={'/'}>Volver a inicio</Link>
+                    <div className="flex flex-col items-center justify-center">
+                        <h3 className="text-center text-3xl">Tu carrito está vacío</h3>
+                        <button className="relative flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1 p-2">
+                            <Link href={'/productos/all'}>Volver a productos</Link>
                         </button>
                     </div>
+
                 )
             }
 

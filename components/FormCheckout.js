@@ -1,8 +1,8 @@
 import React from "react";
 
-const Formulario = () => {
+const FormCheckout = () => {
   return (
-    <form className="max-w-sm mx-auto  ">
+    <form className="max-w-sm mx-auto mt-8 ">
       <div className="mb-4">
         <label htmlFor="nombre" className="block text-sm font-bold mb-2">
           Nombre:
@@ -40,21 +40,9 @@ const Formulario = () => {
         />
       </div>
       <div className="mb-4">
-        <label htmlFor="email" className="block text-sm font-bold mb-2">
-          Consulta:
-        </label>
-        <input
-          type="text"
-          id="consulta"
-          name="consulta"
-          className="w-full px-3 py-2 border rounded-lg"
-          placeholder="Realiza tu consulta"
-        />
-      </div>
-      <div className="mb-4">
         <input
           type="submit"
-          value="Realizar consulta"
+          value="Terminar compra"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 cursor-pointer"
         />
       </div>
@@ -62,4 +50,4 @@ const Formulario = () => {
   );
 };
 
-export default Formulario;
+export default FormCheckout;
