@@ -10,7 +10,7 @@ const ProductsCard = ({item}) => {
             <div className="text-center">
                 <Image
                 alt={item.name}
-                src={`/images_limit/${item.img}`}
+                src={item.img}
                 width={250}
                 height={250}
                 />

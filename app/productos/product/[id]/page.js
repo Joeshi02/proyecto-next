@@ -17,7 +17,7 @@ const Detail = async ({ params }) => {
         <div className="w-full sm:w-1/2 p-2">
           <div className="relative" style={{ paddingTop: '100%' }}>
             <Image
-              src={`/images_limit/${product.img}`}
+              src={product.img}
               alt={product.name}
               layout="fill"
               objectFit="cover"

@@ -17,7 +17,7 @@ const robototitle = Roboto({
 export default function RootLayout({ children }) {
   return (
     <html className={robototitle.className} lang="en">
-      <body className='h-screen bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-blue-700 via-blue-800 to-gray-900 letrasLimit' >
+      <body className='min-h-screen bg-[conic-gradient(at_bottom_right,_var(--tw-gradient-stops))] from-blue-700 via-blue-800 to-gray-900 letrasLimit' >
         <CartProvider>
           <Header />
           {children}

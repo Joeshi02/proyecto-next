@@ -1,49 +1,61 @@
-"use client"
-import React, { useState } from 'react';
-import { mockData } from '@/data/products';
+import Image from 'next/image';
+import Link from 'next/link';
 
-const ProductTable = () => {
-  const [products, setProducts] = useState(mockData);
+const ProductTable = async () => {
+  const items = await fetch(`http://localhost:3000/api/productos/all`, {
+    cache: 'no-store',
+  }).then(r => r.json());
 
-  const handleDelete = (id) => {
-    const updatedProducts = products.filter((product) => product.id !== id);
-    setProducts(updatedProducts);
-  };
 
   return (
-    <div className="container mx-auto">
-      <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead>
-            <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">ID</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Nombre</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Precio</th>
-              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Stock</th>
-              <th className="px-6 py-3"></th>
-            </tr>
-          </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td className="px-6 py-4 whitespace-nowrap text-black">{product.id}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-black">{product.name}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-black">${product.price}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-black">{product.stock}</td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <button
-                    className="text-red-500 hover:text-red-700 cursor-pointer"
-                    onClick={() => handleDelete(product.id)}
-                  >
-                    Eliminar
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <div className="container mx-auto overflow-x-auto">
+  <table className="min-w-full table-auto border border-gray-300">
+    <thead>
+      <tr className="bg-black text-white">
+        <th className="py-2 px-4 border-b">Id</th>
+        <th className="py-2 px-4 border-b">Nombre</th>
+        <th className="py-2 px-4 border-b">Precio</th>
+        <th className="py-2 px-4 border-b">Categoría</th>
+        <th className="py-2 px-4 border-b">Stock</th>
+        <th className="py-2 px-4 border-b">Img</th>
+        <th className="py-2 px-4 border-b">Descripción</th>
+        <th className="py-2 px-4 border-b">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      {items.map((product) => (
+        <tr key={product.id} className="border-b">
+          <td className="py-2 px-4">{product.id}</td>
+          <td className="py-2 px-4">{product.name}</td>
+          <td className="py-2 px-4">{product.price}</td>
+          <td className="py-2 px-4">{product.category}</td>
+          <td className="py-2 px-4">{product.stock}</td>
+          <td className="py-2 px-4">
+            <Image 
+              src={product.img} 
+              alt={product.name} 
+              width={180} 
+              height={180}
+              className='bg-white' 
+            />
+          </td>
+          <td className="py-2 px-4">{product.description}</td>
+          <td className="py-2 px-4">
+            <Link href={`/admin/edit/${product.id}`}>
+              <Image 
+                src={'/images_limit/edit.png'}
+                alt='png edit'
+                width={25}
+                height={25}
+              />
+            </Link>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
   );
 };
 

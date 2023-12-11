@@ -13,7 +13,7 @@ const ItemCart = ({ item }) => {
       <div className="flex items-center">
         <div className="w-1/3">
           <Image
-            src={`/images_limit/${item.img}`}
+            src={item.img}
             alt={item.name}
             width={500}
             height={500} />

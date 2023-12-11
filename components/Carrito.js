@@ -16,7 +16,6 @@ const Carrito = () => {
                 width={28}
                 height={28}
                 className="invert"/>
-                <span>{totalQty}</span>
         </Link>
         <span className="p-1">{totalQty()}</span>
         </>

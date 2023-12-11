@@ -5,7 +5,7 @@ import { useCartContext } from "@/components/context/CartContex"
 import ItemCart from "@/components/ItemCarrito"
 
 
-const carrito = () => {
+const Carrito = () => {
     const { cartList, clear, getTotal } = useCartContext()
     return (
         <>
@@ -49,4 +49,4 @@ const carrito = () => {
 
     )
 }
-export default carrito
+export default Carrito
