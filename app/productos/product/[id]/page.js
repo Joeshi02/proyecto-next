@@ -28,6 +28,7 @@ const Detail = async ({ params }) => {
           <div className="flex flex-col m-2 text-black border border-gray-600 h-full items-center">
             <h2 className="p-1 text-xl">{product.name}</h2>
             <h3 className="p-1">{product.description}</h3>
+            <p className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">Stock: {product.stock}</p>
             <p className="relative w-32 h-10 flex items-center justify-center border border-zinc-700 rounded-lg bg-blue-900 text-slate-300 m-1">${product.price}</p>
             <Cantidad item={product} />
           </div>
