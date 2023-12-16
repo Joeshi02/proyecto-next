@@ -7,7 +7,7 @@ export async function GET(request, { params }) {
 	
 	const { categoria } = params
 
-    const productosRef = collection (db, "productos")
+    const productosRef = collection (db, "productoos")
 
     const q = categoria === 'all'
     ? productosRef
