@@ -58,7 +58,7 @@ const googleLogin = async () => {
                     uid: null
                 })
             }
-        })
+        },[router])
     },[])
     return(
         <AuthContext.Provider

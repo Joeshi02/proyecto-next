@@ -8,7 +8,8 @@ const Contacto = () => {
 
   return (
     <>
-    <BtnVolver/>
+    <div className="container m-auto">
+      <BtnVolver/>
       <main className="container m-auto flex flex-col md:flex-row justify-evenly items-center">
         <div className="order-1 md:order-2">
           <Formulario />
@@ -37,6 +38,8 @@ const Contacto = () => {
           </Link>
         </div>
       </main>
+    </div>
+    
     </>
   )
 }
