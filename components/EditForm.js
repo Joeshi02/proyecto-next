@@ -10,7 +10,6 @@ const updateProduct = async (id, values, file) => {
 
   if (file) {
     try {
-      // Subir la nueva imagen al almacenamiento de Firebase
       const storageRef = ref(storage, `productos/${id}`);
       const fileSnapshot = await uploadBytes(storageRef, file);
       fileUrl = await getDownloadURL(fileSnapshot.ref);
@@ -18,8 +17,6 @@ const updateProduct = async (id, values, file) => {
       console.error("Error al obtener la URL de descarga:", error);
     }
   }
-
-  // Crear o actualizar el documento en Firestore
   const productRef = doc(db, "productos", id);
 
   return setDoc(productRef, {
