@@ -19,7 +19,7 @@ export const revalidate = 3600
 
 const productos = async ({ params }) => {
     const {categoria} = params
-    const items = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/productos/${categoria}`,
+    const items = await fetch(`http://${process.env.NEXT_PUBLIC_URL}/api/productos/${categoria}`,
         { cache: 'no-cache' }
     ).then(r => r.json())
 

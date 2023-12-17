@@ -6,7 +6,7 @@ const Detail = async ({ params }) => {
 
  
   const { id } = params
-  const product = await fetch (`${process.env.NEXT_PUBLIC_URL}/api/productos/detalle/${id}`,
+  const product = await fetch (`http://${process.env.NEXT_PUBLIC_URL}/api/productos/detalle/${id}`,
     { cache: 'no-store' }
   ).then(r => r.json());
 
