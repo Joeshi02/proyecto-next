@@ -4,7 +4,7 @@ import EditForm from "@/components/EditForm"
 
 const EditPage = async ({params}) => {
     const {id} = params
-    const item = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/productos/detalle/${id}`, {
+    const item = await fetch(`http:${process.env.NEXT_PUBLIC_URL}/api/productos/detalle/${id}`, {
         cache: 'no-store'
     }).then(res => res.json())
     
