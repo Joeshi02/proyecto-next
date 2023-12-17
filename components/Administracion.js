@@ -8,7 +8,7 @@ const ProductTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://${process.env.NEXT_PUBLIC_URL}/api/productos/all`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/productos/all`, {
           cache: 'no-store',
         });
 
