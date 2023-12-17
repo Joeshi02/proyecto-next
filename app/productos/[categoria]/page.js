@@ -9,10 +9,10 @@ export async function generateMetadata({ params }) {
 }
 export function generateStaticParams() {
     return[
-        {category:'all' },
-        {category:'motores' },
-        {category:'suspenciones' },
-        {category: 'volantes' }
+        {categoria:'all' },
+        {categoria:'motores' },
+        {categoria:'suspenciones' },
+        {categoria: 'volantes' }
     ]
 }
 export const revalidate = 3600
