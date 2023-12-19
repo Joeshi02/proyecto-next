@@ -1,40 +1,31 @@
 'use client'
 
 import { useState } from "react";
-import { db, storage } from "@/app/firebase/config";
-import { doc, setDoc } from "firebase/firestore";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { db } from "@/app/firebase/config";
+import { doc, updateDoc } from "firebase/firestore";
 
-const updateProduct = async (id, values, file) => {
-  let fileUrl = values.img;
+const updateProduct = async (id, values) => {
+  const docRef = doc(db, "productos", id);
 
-  if (file) {
-    try {
-      const storageRef = ref(storage, `productos/${id}`);
-      const fileSnapshot = await uploadBytes(storageRef, file);
-      fileUrl = await getDownloadURL(fileSnapshot.ref);
-    } catch (error) {
-      console.error("Error al obtener la URL de descarga:", error);
-    }
-  }
-  const productRef = doc(db, "productos", id);
-
-  return setDoc(productRef, {
+  return updateDoc(docRef, {
     name: values.name,
     description: values.description,
-    category: values.category,
     stock: Number(values.stock),
     price: Number(values.price),
-    img: fileUrl,
-  })
-    .then(() => console.log("Producto modificado correctamente"))
-    .catch((error) => console.error("Error al modificar el producto:", error));
+    category: values.category,
+  }).then(() => console.log("Producto actualizado correctamente"));
 };
 
-const EditForm = ({ item }) => {
+const EditProduct = ({ item }) => {
   const { name, description, stock, price, category, img } = item;
-  const [values, setValues] = useState({ name, description, stock, price, category, img });
-  const [file, setFile] = useState(null);
+  const [values, setValues] = useState({
+    name,
+    description,
+    stock,
+    price,
+    category,
+    img,
+  });
 
   const handleChange = (e) => {
     setValues({
@@ -43,14 +34,10 @@ const EditForm = ({ item }) => {
     });
   };
 
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateProduct(item.id, values, file);
+
+    await updateProduct(item.id, values);
   };
 
   return (
@@ -64,12 +51,6 @@ const EditForm = ({ item }) => {
           className="p-2 rounded w-full border border-blue-100 block my-4"
           name="name"
           onChange={handleChange}
-        />
-        <label>Imagen:</label>
-        <input
-          type="file"
-          onChange={handleFileChange}
-          className="p-2 rounded w-full border border-blue-100 block my-4"
         />
         <label>Precio: </label>
         <input
@@ -109,12 +90,11 @@ const EditForm = ({ item }) => {
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 cursor-pointer"
           type="submit"
         >
-          Enviar
+          Actualizar
         </button>
       </form>
     </div>
   );
 };
 
-export default EditForm;
-
+export default EditProduct;

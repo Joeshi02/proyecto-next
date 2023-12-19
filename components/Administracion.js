@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const ProductTable = () => {
   const [items, setItems] = useState([]);
@@ -39,6 +40,8 @@ const ProductTable = () => {
               <th className="py-2 px-4 border-b">Stock</th>
               <th className="py-2 px-4 border-b">Img</th>
               <th className="py-2 px-4 border-b">Descripción</th>
+              <th className="py-2 px-4 border-b">Acciones</th>
+
             </tr>
           </thead>
           <tbody>
@@ -59,6 +62,16 @@ const ProductTable = () => {
                   />
                 </td>
                 <td className="py-2 px-4">{product.description}</td>
+                <td className="py-2 px-4">
+                <Link href={`/admin/edit/${product.id}`}>
+                  <Image 
+                    src={'/images_limit/edit.png'}
+                    alt='png edit'
+                    width={25}
+                   height={25}
+                  />
+                </Link>
+                 </td>
               </tr>
             ))}
           </tbody>
